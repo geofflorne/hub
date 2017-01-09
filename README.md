@@ -1,3 +1,7 @@
-# DDU
+Hub
+===
 
-Data Display Unit
+Building
+--------
+
+The Hub images are built using Buildroot.
