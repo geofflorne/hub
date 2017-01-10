@@ -1,0 +1,20 @@
+{% for signal_name, signal_def in signals.iteritems() %}
+can_signal_create("{{ signal_name }}", "{{ signal_def['name'] }}", "{{ signal_def['unit'] }}");
+{% endfor %}
+
+switch (can_id) {
+{% for msg_id, msg_signals in messages.iteritems() %}
+case {{ msg_id }}:
+	{% set signal_offset = 0 %}
+	{% for signal in msg_signals %}
+		value = CAN_PARSE_UINT16(can_data, {{ signal_offset }});
+		{% if signals[signal]['transform'] %}
+			value = value {{ signals[signal]['transform'] }};
+		{% endif %}
+
+		can_signal_set_value("{{ signal }}", value);
+		{% set signal_offset = signal_offset + 2 %}
+	{% endfor %}
+	break;
+{% endfor %}
+}

@@ -1,0 +1,70 @@
+{
+    "messages": {
+        "0x600": ["rpm", "vbat", "mat", "lam1", "ect1", "eot", "egt1", "rm1", "gear", "calSwitch", "tcSwitch"]
+    },
+    "signals": {
+
+        "rpm": {
+            "name": "RPM",
+            "unit": "rpm",
+            "transform": null
+        },
+
+        "vbat": {
+            "name": "Battery Voltage",
+            "unit": "V",
+            "transform": "/ 1000"
+        },
+
+        "mat": {
+            "name": "Manifold Temperature",
+            "unit": "degC",
+            "transform": "/ 10"
+        },
+
+
+        "lam1": {
+            "name": "Fuel Air Ratio (Lambda)",
+            "unit": "lambda",
+            "transform": "/ 1000"
+        },
+
+        "ect1": {
+            "name": "Engine Coolant Temperature",
+            "unit": "degC",
+            "transform": "/ 10"
+        },
+
+        "eot": {
+            "name": "Engine Oil Temperature",
+            "unit": "degC",
+            "transform": "/ 10"
+        },
+
+        "egt1": {
+            "name": "Exhaust Gas Temperature",
+            "unit": "degC",
+            "transform": "/ 10"
+        },
+
+        "rm1": {
+        	"name": "Run Mode"
+        },
+
+        "gear": {
+        	"name": "Gear Location"
+        },
+
+        "calSwitch": {
+            "name": "Calibration Switch Position",
+            "unit": null,
+            "transform": "+ 1"
+        },
+
+        "tcSwitch": {
+            "name": "Traction Control Switch Position",
+            "unit": null,
+            "transform": "+ 1"
+        }
+    }
+}
