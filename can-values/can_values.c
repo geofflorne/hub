@@ -1,10 +1,19 @@
 // Includes
 #include <stdio.h>
+#include <string.h>
+#include <inttypes.h>
 
 // Prototypes
 void can_signal_create(char* signal, char* name, char* unit);
 void can_signal_set_value(char* signal, int value);
+int CAN_PARSE_UINT16(uint16_t can_data, int init_val); // returns decimal int
 
+
+typedef struct Signals {
+	char* signal;
+	char* name;
+	char* unit;
+} Signals;
 
 // Main!
 int main() {
@@ -51,6 +60,10 @@ int main() {
 	can_signal_create("mat", "Manifold Temperature", "degC");
 	can_signal_create("rm1", "Run Mode", "");
 
+	// test can_id
+	int can_id = 600;
+	int value = 10;
+	uint16_t can_data = 141; //0x8D
 
 	switch (can_id) {
 
@@ -135,9 +148,19 @@ int main() {
 // Create the signal and set its parameters
 void can_signal_create(char* signal, char* name, char* unit) {
 
+	Signals new_signal;
+
+	strcpy(new_signal.signal, signal);
+
 }
 
 // set the vaue to the signal
 void can_signal_set_value(char* signal, int value) {
+
+}
+
+int CAN_PARSE_UINT16(uint16_t can_data, int init_val) {
+
+	return 0;
 
 }
