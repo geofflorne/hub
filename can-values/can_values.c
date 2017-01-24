@@ -2,9 +2,11 @@
 #include <stdio.h>
 
 // Prototypes
-void can_signal_create(string, string, string);
-void can_signal_set_value(string, int);
+void can_signal_create(char* signal, char* name, char* unit);
+void can_signal_set_value(char* signal, int value);
 
+
+// Main!
 int main() {
 
 	// Frame 1 (0x600)
@@ -126,4 +128,16 @@ int main() {
 
 		*/
 	}
+}
+
+// Functions
+
+// Create the signal and set its parameters
+void can_signal_create(char* signal, char* name, char* unit) {
+
+}
+
+// set the vaue to the signal
+void can_signal_set_value(char* signal, int value) {
+
 }
