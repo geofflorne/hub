@@ -1,6 +1,4 @@
-
-int main() {
-
+void create_keys() {
 	
 	can_signal_create("calSwitch", "Calibration Switch Position", "None");
 	
@@ -24,6 +22,10 @@ int main() {
 	
 	can_signal_create("ect1", "Engine Coolant Temperature", "degC");
 	
+}
+
+void set_keys() {
+
 
 	switch (can_id) {
 	
@@ -144,17 +146,5 @@ int main() {
 		
 		break;
 	
-	}
-
-	void can_signal_create(char* signal, char* name, char* unit) {
-
-	}
-
-	void can_signal_set_value(char* signal, int value) {
-
-	}
-
-	int CAN_PARSE_UINT16(uint16_t can_data, int init_val) {
-
 	}
 }

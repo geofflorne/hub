@@ -1,9 +1,11 @@
-
-int main() {
-
+void create_keys() {
 	{% for signal_name, signal_def in signals.iteritems() %}
 	can_signal_create("{{ signal_name }}", "{{ signal_def['name'] }}", "{{ signal_def['unit'] }}");
 	{% endfor %}
+}
+
+void set_keys() {
+
 
 	switch (can_id) {
 	{% for msg_id, msg_signals in messages.iteritems() %}
@@ -20,17 +22,5 @@ int main() {
 		{% endfor %}
 		break;
 	{% endfor %}
-	}
-
-	void can_signal_create(char* signal, char* name, char* unit) {
-
-	}
-
-	void can_signal_set_value(char* signal, int value) {
-
-	}
-
-	int CAN_PARSE_UINT16(uint16_t can_data, int init_val) {
-
 	}
 }
