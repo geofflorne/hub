@@ -4,8 +4,7 @@ void create_keys() {
 	{% endfor %}
 }
 
-void set_keys() {
-
+void set_keys(can_id, can_data) {
 
 	switch (can_id) {
 	{% for msg_id, msg_signals in messages.iteritems() %}
