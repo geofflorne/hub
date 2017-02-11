@@ -1,14 +1,14 @@
 #include "main.h"
+#include "hiredis.h"
 
 /* gcc main.c -I /usr/local/include/hiredis/ -L /usr/local/lib/ -l hiredis -o redis-example */
-#include <hiredis.h>
 
 int main() {
   // initialize the hiredis server
   initialize_server();
 
   // initialize the keys
-  initialize_keys();
+  // initialize_keys();
 
 
 }

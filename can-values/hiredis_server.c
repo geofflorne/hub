@@ -1,11 +1,13 @@
 /* gcc hiredis_server.c -I /usr/local/include/hiredis/ -L /usr/local/lib/ -l hiredis -c */
-#include <hiredis.h>
+#include "hiredis.h"
+#include <stdlib.h>
 
 void initialize_server() {
 
   char *hostname = "127.0.0.1";
   int port = 6379;
   struct timeval timeout = { 1, 500000 }; // 1.5 seconds
+  redisReply *reply;
 
   redisContext *c = redisConnectWithTimeout(hostname, port, timeout);
 
