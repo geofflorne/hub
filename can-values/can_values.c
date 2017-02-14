@@ -24,14 +24,16 @@ void initializ_keys() {
 
 }
 
-void set_key_value(can_id, can_data) {
+void set_key_value(int can_id, int can_data) {
+
+	int value;
 
 	switch (can_id) {
 
 	case 0x614:
 
 
-			value = CAN_PARSE_UINT16(can_data, 0);
+			//value = CAN_PARSE_UINT16(can_data, 0);
 
 
 			can_signal_set_value("gear", value);

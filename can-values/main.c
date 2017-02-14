@@ -8,13 +8,17 @@ int main() {
   initialize_server();
 
   // initialize the keys
-  // initialize_keys();
+  initialize_keys();
 
 
 }
 
 void can_signal_create(char* signal, char* name, char* transform) {
   //create a key for the signal sent
+
+  set_key_value(signal, 0);
+
+
 }
 
 void CAN_PARSE_UINT16(){

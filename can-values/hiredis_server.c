@@ -2,6 +2,8 @@
 #include "hiredis.h"
 #include <stdlib.h>
 
+redisContext *c;
+
 void initialize_server() {
 
   char *hostname = "127.0.0.1";
@@ -9,7 +11,7 @@ void initialize_server() {
   struct timeval timeout = { 1, 500000 }; // 1.5 seconds
   redisReply *reply;
 
-  redisContext *c = redisConnectWithTimeout(hostname, port, timeout);
+  c = redisConnectWithTimeout(hostname, port, timeout);
 
   printf("Hostname: %s", hostname);
 
