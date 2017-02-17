@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <math.h>
 #include <string.h>
 #include <unistd.h>
 #include <fcntl.h>
@@ -8,6 +9,7 @@
 #include <net/if.h>
 #include <linux/can.h>
 #include <linux/can/raw.h>
+
 int soc;
 int read_can_port;
 
@@ -71,21 +73,36 @@ void read_port()
                 recvbytes = read(soc, &frame_rd, sizeof(struct can_frame));
                 if(recvbytes)
                 {
-                    printf("number of frames = %d ", frame_rd.can_dlc);
-                    for (int i = 0; i < 8; i++) {
-                      printf("%d ", frame_rd.data[i]);
+                    printf("number of frames = %d address = %d  ",
+                              frame_rd.can_dlc, frame_rd.can_id);
+                    printf("data = \n");
+                    fflush(stdout);
+
+                    char hex[8] = {};
+                    char temp[2] = {};
+                    for (int i = 0; i < frame_rd.can_dlc; i++) {
+
+                      sprintf(temp, "%X", frame_rd.data[i]);
+                      strcat(hex, temp);
+
                     }
-                    printf("\n");
+                    
+                    printf("%s\n", hex);
+                    fflush(stdout);
+
+
                 }
             }
         }
     }
 }
+
 int close_port()
 {
     close(soc);
     return 0;
 }
+
 int main(void)
 {
     open_port("vcan0");

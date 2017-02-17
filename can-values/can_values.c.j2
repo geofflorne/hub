@@ -1,6 +1,6 @@
 void create_keys() {
 	{% for signal_name, signal_def in signals.iteritems() %}
-	can_signal_create("{{ signal_name }}", "{{ signal_def['name'] }}", "{{ signal_def['unit'] }}");
+	can_signal_create("{{ signal_name }}");
 	{% endfor %}
 }
 

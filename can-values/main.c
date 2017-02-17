@@ -8,7 +8,7 @@ int main() {
   initialize_server();
 
   // initialize the keys
-  initialize_keys();
+  create_keys();
 
 
 }
