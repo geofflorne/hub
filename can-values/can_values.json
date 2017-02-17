@@ -1,12 +1,12 @@
 {
     "messages": {
-        "600": ["rpm", "vbat"],
-        "603": ["lam1"],
-        "605": ["ect1", "egt1"],
-        "609": ["eot"],
-        "610": ["calSwitch", "tcSwitch"],
-        "614": ["gear"],
-        "615": ["mat", "rm1"]
+        "0x600": ["rpm", "vbat"],
+        "0x603": ["lam1"],
+        "0x605": ["ect1", "egt1"],
+        "0x609": ["eot"],
+        "0x610": ["calSwitch", "tcSwitch"],
+        "0x614": ["gear"],
+        "0x615": ["mat", "rm1"]
     },
     "signals": {
 
