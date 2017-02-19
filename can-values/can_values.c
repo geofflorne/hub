@@ -1,5 +1,7 @@
 #include <stdint.h>
 #include "main.h"
+#include <linux/can.h>
+#include <linux/can/raw.h>
 
 void create_keys() {
 
@@ -27,7 +29,7 @@ void create_keys() {
 
 }
 
-void set_keys(canid_t can_id, (uint16_t *) data[0]) {
+void set_keys(canid_t can_id, uint16_t can_data) {
 
 	int value;
 

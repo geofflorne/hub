@@ -93,7 +93,7 @@ void read_port()
                     printf("\n");
                     fflush(stdout);
 
-                    set_keys(frame_rd.can_id, frame_rd.can_data[]);
+                    set_keys(frame_rd.can_id, frame_rd.data);
                 }
             }
         }

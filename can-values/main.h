@@ -1,4 +1,4 @@
-
+void set_keys(canid_t, uint16_t);
 void initialize_server();
 void create_keys();
 void can_signal_create(char*);
