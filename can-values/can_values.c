@@ -27,7 +27,7 @@ void create_keys() {
 
 }
 
-void set_keys(uint32_t can_id, int can_data) {
+void set_keys(canid_t can_id, (uint16_t *) data[0]) {
 
 	int value;
 
@@ -37,6 +37,8 @@ void set_keys(uint32_t can_id, int can_data) {
 
 
 			value = CAN_PARSE_UINT16(can_data, 0);
+
+
 
 
 			can_signal_set_value("gear", value);
@@ -49,13 +51,17 @@ void set_keys(uint32_t can_id, int can_data) {
 
 			value = CAN_PARSE_UINT16(can_data, 0);
 
+
 				value = value / 10;
+
 
 
 			can_signal_set_value("mat", value);
 
 
 			value = CAN_PARSE_UINT16(can_data, 0);
+
+
 
 
 			can_signal_set_value("rm1", value);
@@ -68,7 +74,9 @@ void set_keys(uint32_t can_id, int can_data) {
 
 			value = CAN_PARSE_UINT16(can_data, 0);
 
+
 				value = value + 1;
+
 
 
 			can_signal_set_value("calSwitch", value);
@@ -76,7 +84,9 @@ void set_keys(uint32_t can_id, int can_data) {
 
 			value = CAN_PARSE_UINT16(can_data, 0);
 
+
 				value = value + 1;
+
 
 
 			can_signal_set_value("tcSwitch", value);
@@ -89,7 +99,9 @@ void set_keys(uint32_t can_id, int can_data) {
 
 			value = CAN_PARSE_UINT16(can_data, 0);
 
+
 				value = value / 10;
+
 
 
 			can_signal_set_value("eot", value);
@@ -102,7 +114,9 @@ void set_keys(uint32_t can_id, int can_data) {
 
 			value = CAN_PARSE_UINT16(can_data, 0);
 
+
 				value = value / 1000;
+
 
 
 			can_signal_set_value("lam1", value);
@@ -116,12 +130,16 @@ void set_keys(uint32_t can_id, int can_data) {
 			value = CAN_PARSE_UINT16(can_data, 0);
 
 
+
+
 			can_signal_set_value("rpm", value);
 
 
 			value = CAN_PARSE_UINT16(can_data, 0);
 
+
 				value = value / 1000;
+
 
 
 			can_signal_set_value("vbat", value);
@@ -134,7 +152,9 @@ void set_keys(uint32_t can_id, int can_data) {
 
 			value = CAN_PARSE_UINT16(can_data, 0);
 
+
 				value = value / 10;
+
 
 
 			can_signal_set_value("ect1", value);
@@ -142,7 +162,9 @@ void set_keys(uint32_t can_id, int can_data) {
 
 			value = CAN_PARSE_UINT16(can_data, 0);
 
+
 				value = value / 10;
+
 
 
 			can_signal_set_value("egt1", value);

@@ -25,13 +25,6 @@ void initialize_server() {
       }
       exit(1);
   }
-
-  // test PING/* PING server */
-  reply = redisCommand(c,"PING");
-  printf("PING: %s\n", reply->str);
-  freeReplyObject(reply);
-
-  // should implement a "press q to quit" option
 }
 
 void can_signal_create(char* sig){
