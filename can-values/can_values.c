@@ -1,3 +1,5 @@
+#include <stdint.h>
+
 void create_keys() {
 
 	can_signal_create("calSwitch");
@@ -9,7 +11,7 @@ void create_keys() {
 	can_signal_create("lam1");
 
 	can_signal_create("egt1");
-	
+
 	can_signal_create("vbat");
 
 	can_signal_create("gear");
@@ -24,7 +26,7 @@ void create_keys() {
 
 }
 
-void set_keys(canid_t can_id, can_data) {
+void set_keys(uint32_t can_id, int can_data) {
 
 	int value;
 
