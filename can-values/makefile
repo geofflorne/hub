@@ -10,5 +10,9 @@ hiredis.o: hiredis.c hiredis.h
 can_values.o: can_values.c
 	gcc -c can_values.c
 
+make can: main.c hiredis.c hiredis.h can_values.c
+	gcc main.c hiredis.c can_values.c -I /usr/local/include/hiredis/ -L /usr/local/lib/ -l hiredis -o can
+
+
 make clean:
-	rm program
+	rm can

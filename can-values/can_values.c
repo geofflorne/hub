@@ -1,4 +1,5 @@
 #include <stdint.h>
+#include "main.h"
 
 void create_keys() {
 

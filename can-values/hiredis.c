@@ -1,5 +1,5 @@
 /* gcc hiredis.c -I /usr/local/include/hiredis/ -L /usr/local/lib/ -l hiredis -c */
-#include "hiredis.h"
+#include <hiredis.h>
 #include <stdlib.h>
 
 redisContext *c;
@@ -34,8 +34,14 @@ void initialize_server() {
   // should implement a "press q to quit" option
 }
 
-void can_signal_create(char* signal){
+void can_signal_create(char* sig){
   redisReply *reply;
-  reply = redisCommand(c, "SET %s 0", signal);
+  reply = redisCommand(c, "SET %s 0", sig);
+  freeReplyObject(reply);
+}
+
+void can_signal_set_value(char* sig, int value) {
+  redisReply *reply;
+  reply = redisCommand(c, "SET %s %d", sig, value);
   freeReplyObject(reply);
 }

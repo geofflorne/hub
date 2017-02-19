@@ -105,7 +105,7 @@ int close_port()
 }
 
 
-void CAN_PARSE_UINT16(){
+int CAN_PARSE_UINT16(){
 
 }
 
