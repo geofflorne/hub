@@ -1,4 +1,6 @@
 #include <stdint.h>
+#include <linux/can.h>
+#include <linux/can/raw.h>
 #include "main.h"
 
 void create_keys() {
@@ -7,22 +9,21 @@ void create_keys() {
 	{% endfor %}
 }
 
-void set_keys(canid_t can_id, can_data) {
+void set_keys(canid_t can_id, uint8_t* can_data) {
 
 	int value;
 
 	switch (can_id) {
 	{% for msg_id, msg_signals in messages.iteritems() %}
 	case {{ msg_id }}:
-		{% set signal_offset = 0 %}
+		{% set index0 = 0 %}
 		{% for signal in msg_signals %}
-			value = CAN_PARSE_UINT16(can_data, {{ signal_offset }});
+			value = CAN_PARSE_UINT16(can_data, {{ loop.index0*2 }});
 
 			{% if signals[signal]['transform'] %}
 				value = value {{ signals[signal]['transform'] }};
 			{% endif %}
 
-			{% set signal_offset = signal_offset + 2 %}
 			can_signal_set_value("{{ signal }}", value);
 
 		{% endfor %}

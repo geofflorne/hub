@@ -1,8 +1,10 @@
-#include "main.h"
-#include "hiredis.h"
-/* gcc main.c -I /usr/local/include/hiredis/ -L /usr/local/lib/ -l hiredis -o redis-example */
-#include <stdint.h>
 
+
+/* gcc main.c -I /usr/local/include/hiredis/ -L /usr/local/lib/ -l hiredis -o redis-example */
+
+
+#include "hiredis.h"
+#include <stdint.h>
 #include <stdio.h>
 #include <math.h>
 #include <string.h>
@@ -14,6 +16,8 @@
 #include <net/if.h>
 #include <linux/can.h>
 #include <linux/can/raw.h>
+#include "main.h"
+
 
 int soc;
 int read_can_port;
@@ -44,6 +48,7 @@ int open_port(const char *port)
     }
     return 0;
 }
+
 int send_port(struct can_frame *frame)
 {
     int retval;
@@ -57,7 +62,7 @@ int send_port(struct can_frame *frame)
         return (0);
     }
 }
-/* this is just an example, run in a thread */
+
 void read_port()
 {
     struct can_frame frame_rd;
@@ -80,20 +85,7 @@ void read_port()
                 recvbytes = read(soc, &frame_rd, sizeof(struct can_frame));
                 if(recvbytes)
                 {
-                    printf("number of frames = %d address = %d  ",
-                              frame_rd.can_dlc, frame_rd.can_id);
-                    printf("data = ");
-                    fflush(stdout);
-
-                    for (int i = 0; i < frame_rd.can_dlc; i++) {
-
-                      printf("%X ", frame_rd.data[i]);
-
-                    }
-                    printf("\n");
-                    fflush(stdout);
-
-                    set_keys(frame_rd.can_id, frame_rd.data);
+                  set_keys(frame_rd.can_id, frame_rd.data);
                 }
             }
         }
@@ -107,11 +99,20 @@ int close_port()
 }
 
 
-int CAN_PARSE_UINT16(){
+uint16_t CAN_PARSE_UINT16(uint8_t* can_data, int pos)
+{
+
+  uint16_t data = (can_data[pos] << 8) | can_data[pos+1];
+
+  printf("data: %04x ", data);
+  fflush(stdout);
+
+  return data;
 
 }
 
-int main() {
+int main()
+{
   // initialize the hiredis server
   initialize_server();
 

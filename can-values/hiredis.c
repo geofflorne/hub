@@ -13,7 +13,7 @@ void initialize_server() {
 
   c = redisConnectWithTimeout(hostname, port, timeout);
 
-  printf("Hostname: %s", hostname);
+  printf("Hostname: %s\n", hostname);
 
   // error checking
   if (c == NULL || c->err) {
@@ -35,6 +35,7 @@ void can_signal_create(char* sig){
 
 void can_signal_set_value(char* sig, int value) {
   redisReply *reply;
+  printf("SET %s %d\n", sig, value);
   reply = redisCommand(c, "SET %s %d", sig, value);
   freeReplyObject(reply);
 }
